@@ -1,0 +1,43 @@
+<div class="section-wrap">
+    <div class="header">
+        <a href="/league_main" class="main_logo">
+            <img src="/images/league1_logo.jpg">
+        </a>
+        <div class="menu-bar">
+            <div class="dropdown">
+                <a href="/league_notice/list/1">공지사항</a>
+            </div>
+
+            <div class="dropdown">
+                <button class="dropbtn">기록실</button>
+                <div class="dropdown_content">
+                    <a href="/league_score/scoreboard">개인 기록</a>
+                    <a href="/league_score/team_scoreboard">팀 기록</a>
+                </div>  
+            </div>
+
+            <div class="dropdown">
+                <a href="/score">동영상</a>
+            </div>
+
+            <div class="dropdown">
+                <button class="dropbtn">커뮤니티</button>
+                <div class="dropdown_content" id="dropdown_content2">
+                    <a href="/league_c_board/list/1">자유게시판</a>
+                    <a href="/league_s_board/list/1">건의게시판</a>
+                </div>  
+            </div>
+
+            <div class="dropdown" id="box2">
+                <% if(logined == undefined){ %>
+                <a href="/login">Login</a>
+                <a href="/signupchk">Signup</a>
+                <% }else{ %>
+                <a><%=logined%></a>
+                <a href="/logout">Logout</a>
+                <% } %> 
+            </div>
+            <a href="/" class="freedrow">FreeDrow</a>
+        </div>    
+    </div>
+</div>

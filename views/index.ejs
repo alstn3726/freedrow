@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>프리드로우</title>
+    <link rel="shortcut icon" href="/images/myicon.png">
+    <link rel="stylesheet" href="/stylesheets/index.css">
+</head>
+<body>
+    <div class="wrap">
+        <div class="section-wrap">
+            <div class="header">
+                <a href="/" class="main_logo">
+                    <img src="/images/main_logo.png">
+                </a>
+                <div class="menu-bar">
+                    <div class="dropdown">
+                        <a href="/main_notice/list/1">공지사항</a>
+                    </div>
+
+                    <div class="dropdown">
+                        <button class="dropbtn">모집</button>
+                        <div class="dropdown_content">
+                            <a href="/recruitment1/list/1">교류전 모집</a>
+                            <a href="/recruitment2/list/1">선수 모집</a>
+                            <a href="/recruitment3/list/1">게스트 모집</a>
+                            <a href="/recruitment4/list/1">리그 참가팀 모집</a>
+                        </div>  
+                    </div>
+
+                    <div class="dropdown">
+                        <a href="/score">스코어 보드</a>
+                    </div>
+
+                    <div class="dropdown">
+                        <button class="dropbtn">커뮤니티</button>
+                        <div class="dropdown_content" id="dropdown_content2">
+                            <a href="/comunity_board/list/1">자유게시판</a>
+                            <a href="/shop_board/list/1">중고장터</a>
+                        </div>  
+                    </div>
+
+                    <div class="dropdown" id="box1">
+                        <a href="/search/team">팀</a>
+                        <a href="/search/player">선수</a>
+                    </div>
+
+                    <div class="dropdown" id="box2">
+                        <% if(logined == undefined){ %>
+                        <a href="/login">Login</a>
+                        <a href="/signupchk">Signup</a>
+                        <% }else{ %>
+                        <p><%=logined%></p>
+                        <a href="/logout">Logout</a>
+                        <% } %> 
+                    </div>
+                </div>    
+            </div>
+            <a class="badge">
+                <img src="/images/badge.jpg">
+                <img src="/images/badge2.jpg">
+                <img src="/images/badge3.jpg">
+                <img src="/images/badge4.jpg">
+                <img src="/images/badge5.jpg">
+            </a>
+        </div>
+        <section id="league">
+            <div class="league_border">
+                <div id="leaue_div1"><h4>지역별 리그</h4></div>
+                <div id="leaue_div2">
+                    <ul>
+                        <li><a href="/league_main"><img src="/images/league1.jpg">남양주 별내 리그</a></li>
+                    </ul>
+                </div>
+                <div id="leaue_div3">
+                    <ul>
+                        <li><a href="#"><img src="/images/league2.jpg">인천 리그</a></li>
+                    </ul>
+                </div>
+                <div id="leaue_div4">
+                    <ul>
+                        <li><a href="#"><img src="/images/league3.jpg">서울 노원구 리그</a></li>
+                    </ul>
+                </div>
+                <div id="leaue_div5">
+                    <ul>
+                        <li><a href="#"><img src="/images/league4.jpg">부산 리그</a></li>
+                    </ul>
+                </div>
+                <div id="leaue_div6">
+                    <ul>
+                        <li><a href="#"><img src="/images/league5.jpg">광주 리그</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="notice_border">
+                <div id="notice_div1"><h4>공지사항</h4></div>
+                <div id="notice_div2">
+                    <ul>
+                        <% rdata.forEach(function(rdata,index){ %>
+                        <li><a href="/main_notice/list/detail/<%= rdata.board_num %> "><%= rdata.subject %> &nbsp;&nbsp;<span>[Free Drow]</span></a></li>
+                        <% }) %> 
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <div class="footer">
+            <div class="footer-table">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <img src="/images/main_logo.png">
+                    </div>
+                    <div class="footer-main">
+                        <ul>
+                            <h1><a href="#"> 이용약관</a></h1>
+                            <p>[Free Drow]<br>
+                                대표자 : 김민수<br>
+                                프리드로우 : 경기도 남양주시 별내동<br>
+                                덕송3로 17</p>
+                        </ul>
+                        <ul>
+                            <h1>BANK INFO</h1>
+                            <p>개인정보 관리책임자 : 이수영<br>
+                                입금계좌 : 국민은행 123-123456-12-012<br>
+                                예금주 : (주)프리드로우
+                            </p>
+                        </ul>
+                        <ul>
+                            <h1>CONTACT</h1>
+                            <p>0123-4321<br>
+                               wndxo1111@gmail.com
+                            </p>
+                        </ul>
+                    </div>
+                </div>
+                <p class="copyright">Copyright ©2021 [Free Drow] all rights reserved.</p>
+            </div>
+        </div>
+    </div>        
+</body>
+</html>

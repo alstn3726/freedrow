@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>자유 게시판</title>
+    <link rel="shortcut icon" href="/images/myicon.png">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<link rel="stylesheet" href="/stylesheets/board.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+    <div class="wrap">
+        <%- include("../header") %>
+        
+        <div class="detail_body">
+            <h3 class="board_title">자유게시판</h3>
+            <form class="view_wrap" method="post">
+                <table class="view_list">
+                    <tr class="view_subject">
+                        <td><%= data.subject %></td>
+                    </tr>
+                    <tr class="view_writer">
+                        <td><%= data.board_id %>&nbsp;&nbsp;&nbsp;<%= moment(data.reg_date).format('YYYY.MM.DD')%>&nbsp;&nbsp;&nbsp;<%= data.hit%></td>
+                    </tr>
+                    <tr class="view_content">
+                        <td id="content"><%= data.content %></td>
+                    </tr>
+                    <tr class="view_content">
+                        <td><img src="/images/upload/<%= data.image %>" alt=""></td>
+                    </tr>
+                </table>
+                <div class="view_bt">
+                    <button><a class="a_link" href="/recruitment3/list/1">목록</a></button>
+                    <% if(logined == data.board_id){ %>
+                        <button><a class="a_link" href="/recruitment3/list/update/<%= data.board_num %>">수정</a></button>
+                    <% }else{ %>
+                        <button><a class="a_link" href="javascript:alert('권한이 없습니다.');history.back();">수정</a></button>
+                    <% } %> 
+                    <% if(logined == data.board_id){ %>
+                        <button onclick="return confirm('삭제하시겠습니까?')"><a class="a_link" href="/recruitment3/list/delete/<%= data.board_num %>">삭제</a></button>
+                    <% }else{ %>
+                        <button><a class="a_link" href="javascript:alert('권한이 없습니다.');history.back();">삭제</a></button>
+                    <% } %> 
+                </div>
+            </form>
+        </div>
+
+        <!-- 댓글!!!! -->
+        <div class="re_wrap">
+            <div class="re_container">
+                <h3>댓글</h3>
+                <!-- 댓글 list 폼 -->
+                    <table>
+                        <% rdata.forEach(function(data,index){ %>
+                        <tr>
+                            <td><%= data.re_id %> &nbsp;&nbsp;&nbsp; <%= moment(data.re_date).format('YYYY.MM.DD')%></td>
+                        </tr>
+                        <tr>
+                            <td><%= data.re_content %></td>
+                            <% if(logined == data.re_id){ %>
+                                <button><a class="a_link" href="/recruitment3/list/re_update/<%= data.re_num %>">수정</a></button>
+                            <% }else{ %>
+                                <button><a class="a_link" href="javascript:alert('권한이 없습니다.');history.back();">수정</a></button>
+                            <% } %> 
+                            <% if(logined == data.re_id){ %>
+                                <button onclick="return confirm('삭제하시겠습니까?')"><a class="a_link" href="/recruitment3/list/redelete/<%= data.re_num %>">삭제</a></button>
+                            <% }else{ %>
+                                <button><a class="a_link" href="javascript:alert('권한이 없습니다.');history.back();">삭제</a></button>
+                            <% } %> 
+                        </tr>
+                        <% }) %>    
+                    </table>
+                <!-- 댓글 write 폼 -->
+                <form method="POST">
+                    <input type="hidden" name="re_num" value="<%= data.re_num %>">
+                    <div class="re_write">
+                        <textarea name="re_content" id="re_textarea" cols="100" rows="5" required></textarea>
+                        <button type="button" onclick="history.back();">취소</button>
+                        <% if(logined == undefined ){ %>
+                        <button><a class="a_link" href="javascript:alert('권한이 없습니다.');history.back();">등록</a></button>
+                        <% }else{ %>
+                        <button type="submit" onclick="return confirm('등록하시겠습니까?')">등록</button>                     
+                        <% } %> 
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script>
+        const string = document.getElementById('content').textContent;
+        document.getElementById('content').innerHTML=string;
+    </script>
+</body>
+</html>

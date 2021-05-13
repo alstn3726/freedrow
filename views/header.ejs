@@ -1,0 +1,49 @@
+<div class="section-wrap">
+    <div class="header">
+        <a href="/" class="main_logo">
+            <img src="/images/main_logo.png">
+        </a>
+        <div class="menu-bar">
+            <div class="dropdown">
+                <a href="/main_notice/list/1">공지사항</a>
+            </div>
+
+            <div class="dropdown">
+                <button class="dropbtn">모집</button>
+                <div class="dropdown_content">
+                    <a href="/recruitment1/list/1">교류전 모집</a>
+                    <a href="/recruitment2/list/1">선수 모집</a>
+                    <a href="/recruitment3/list/1">게스트 모집</a>
+                    <a href="/recruitment4/list/1">리그 참가팀 모집</a>
+                </div>  
+            </div>
+
+            <div class="dropdown">
+                <a href="/score">스코어 보드</a>
+            </div>
+
+            <div class="dropdown">
+                <button class="dropbtn">커뮤니티</button>
+                <div class="dropdown_content" id="dropdown_content2">
+                    <a href="/comunity_board/list/1">자유게시판</a>
+                    <a href="/shop_board/list/1">중고장터</a>
+                </div>  
+            </div>
+
+            <div class="dropdown" id="box1">
+                <a href="/search/team">팀</a>
+                <a href="/search/player">선수</a>
+            </div>
+
+            <div class="dropdown" id="box2">
+                <% if(logined == undefined){ %>
+                <a href="/login">Login</a>
+                <a href="/signupchk">Signup</a>
+                <% }else{ %>
+                <a><%=logined%></a>
+                <a href="/logout">Logout</a>
+                <% } %> 
+            </div>
+        </div>    
+    </div>
+</div>

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>프리드로우</title>
+    <link rel="stylesheet" href="/stylesheets/signup.css">
+    <link rel="shortcut icon" href="/images/myicon.png">
+    <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+    <script src="/javascripts/signup.js"></script>
+    
+</head>
+<body>
+    <div class="section-wrap">
+        <div class="header">
+            <a href="/" class="main_logo">
+                <img src="/images/main_logo.png">
+            </a>
+            <div class="menu-bar">
+                <div class="dropdown">
+                    <a href="/main_notice/list/1">공지사항</a>
+                </div>
+    
+                <div class="dropdown">
+                    <button class="dropbtn">모집</button>
+                    <div class="dropdown_content">
+                        <a href="/recruitment1/list/1">교류전 모집</a>
+                        <a href="/recruitment2/list/1">선수 모집</a>
+                        <a href="/recruitment3/list/1">게스트 모집</a>
+                        <a href="/recruitment4/list/1">리그 참가팀 모집</a>
+                    </div>  
+                </div>
+    
+                <div class="dropdown">
+                    <a href="/score">스코어 보드</a>
+                </div>
+    
+                <div class="dropdown">
+                    <button class="dropbtn">커뮤니티</button>
+                    <div class="dropdown_content" id="dropdown_content2">
+                        <a href="/comunity_board/list/1">자유게시판</a>
+                        <a href="/shop_board/list/1">중고장터</a>
+                    </div>  
+                </div>
+    
+                <div class="dropdown" id="box1">
+                    <a href="/search/team">팀</a>
+                    <a href="/search/player">선수</a>
+                </div>
+    
+                <div class="dropdown" id="box2">
+                    <a href="/login">Login</a>
+                    <a href="/signupchk">Signup</a>
+                </div>
+            </div>    
+        </div>
+    </div>
+
+    <form method="POST" id="signform">
+        <div id="wrapper">
+            <div class="title">회원 가입 정보 입력</div>
+            <label>아이디 : </label><input type="text" name="id" id="id" placeholder="영어 소문자,숫자 4-12자리">
+            <div class="id_regex" id="regex"></div>
+            
+            <label>패스워드 : </label><input type="password" name="password" id="pw" placeholder="영어대소문자,숫자 8-11자리"><br>
+            <div class="pw_regex" id="regex"></div>
+            
+            <label>패스워드확인 : </label><input type="password" id="repw"><br>
+            <div class="repw_regex" id="regex"></div>
+            
+            <label>이름: </label><input type="text" name="name" id="name" placeholder="한글만 입력해주세요."><br>
+            <div class="name_regex" id="regex"></div>
+            
+            <label>전화번호 : </label><input type="text" name="phone" id="phone" placeholder="ex)01012341234"><br>
+            <div class="phone_regex" id="regex"></div>
+            
+            <label>이메일 : </label><input type="text" name="email" id="email" placeholder="abcd@abcd.com"><br>
+            <div class="email_regex" id="regex"></div>
+
+            <label class="label_team">팀 : 
+                <select name="team" id="team">
+                    <% data.forEach(function(data,index){ %>
+                    <option value="<%= data.team%>"><%= data.team%></option>
+                    <% }) %> 
+                </select>
+            </label><br>
+            <div class="team_regex" id="regex"></div>
+
+            <div id="signup">
+            <input type="submit" name="signup" value="회원가입" id="signupbtn">
+            <input type="reset" value="다시입력" id="resignupbtn">
+            </div>
+        </div>
+</form>
+</body>
+</html>
+

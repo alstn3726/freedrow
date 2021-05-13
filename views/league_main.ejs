@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>프리드로우</title>
+    <link rel="shortcut icon" href="/images/myicon.png">
+    <link rel="stylesheet" href="/stylesheets/league.css">
+    <link href='/packages/core/main.css' rel='stylesheet' />
+    <link href='/packages/daygrid/main.css' rel='stylesheet' />
+    <link href='/packages/timegrid/main.css' rel='stylesheet' />
+    <link href='/packages/list/main.css' rel='stylesheet' />
+
+    <script src="/packages/core/main.js"></script>
+    <script src="/packages/interaction/main.js"></script>
+    <script src="/packages/daygrid/main.js"></script>
+    <script src="/packages/timegrid/main.js"></script>
+    <script src="/packages/list/main.js"></script>
+    <script src="/packages/core/main.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script>
+
+        document.addEventListener('DOMContentLoaded', function() {
+          var calendarEl = document.getElementById('calendar');
+      
+          var calendar = new FullCalendar.Calendar(calendarEl, {
+            plugins: [ 'interaction', 'dayGrid' ],
+            header: {
+              left: 'prevYear,prev,next,nextYear today',
+              center: 'title',
+              right: 'dayGridMonth,dayGridWeek,dayGridDay'
+            },
+            defaultDate: '2021-03-01',
+            navLinks: true, // can click day/week names to navigate views
+            editable: true,
+            eventLimit: true, // allow "more" link when too many events
+            events: [
+              {
+                title: 'poten vs nike',
+                start: '2021-03-06',
+                InputEvent
+              },
+              {
+                title: 'adidas vs nba',
+                start: '2021-03-07',
+              },
+              {
+                title: 'nike vs adidas',
+                start: '2021-03-13'
+              },
+              {
+                title: 'poten vs nba',
+                start: '2021-03-14',
+              },
+              {
+                title: 'poten vs adidas',
+                start: '2021-03-20',
+              },
+              {
+                title: 'nike vs nba',
+                start: '2021-03-21',
+              },
+              {
+                title: 'nike vs poten',
+                start: '2021-03-27',
+              },
+              {
+                title: 'nba vs adidas',
+                start: '2021-03-28',
+              },
+              {
+                title: 'adidas vs nike',
+                start: '2021-04-03',
+              },
+              {
+                title: 'nba vs poten',
+                start: '2021-04-04',
+              },
+              {
+                title: 'adidas vs poten',
+                start: '2021-04-10',
+              },
+              {
+                title: 'nba vs nike',
+                start: '2021-04-11',
+              },
+              {
+                title: 'final',
+                start: '2021-04-17',
+              },
+            ],
+          });
+      
+          calendar.render();
+        });
+      
+      </script>
+      <style>
+
+        body {
+          font-family: Arial, Helvetica Neue, Helvetica, sans-serif;
+          font-size: 14px;
+        }
+        .fc-unthemed td.fc-today{
+            background:salmon;
+        }
+        .fc-day-top.fc-other-month{
+            opacity: 0.5;
+        }
+        #calendar {
+            max-width: 900px;
+            margin: 0 auto;
+            grid-column-start: 2;
+            grid-column-end: 10;
+            grid-row-start: 6;
+            grid-row-end: 16;
+            color: #fff;
+            font-size: 10px;
+        }
+        .fc-content{
+          text-align: center;
+         
+        }
+      
+      </style>
+</head>
+<body>
+    <div class="wrap">
+        <div class="section-wrap">
+            <div class="header">
+                <a href="/league_main" class="main_logo">
+                    <img src="/images/league1_logo.jpg">
+                </a>
+                <div class="menu-bar">
+                    <div class="dropdown">
+                        <a href="/league_notice/list/1">공지사항</a>
+                    </div>
+
+                    <div class="dropdown">
+                        <button class="dropbtn">기록실</button>
+                        <div class="dropdown_content">
+                            <a href="/league_score/scoreboard">개인 기록</a>
+                            <a href="/league_score/team_scoreboard">팀 기록</a>
+                        </div>  
+                    </div>
+
+                    <div class="dropdown">
+                        <a href="/score">동영상</a>
+                    </div>
+
+                    <div class="dropdown">
+                        <button class="dropbtn">커뮤니티</button>
+                        <div class="dropdown_content" id="dropdown_content2">
+                            <a href="/league_c_board/list/1">자유게시판</a>
+                            <a href="/league_s_board/list/1">건의게시판</a>
+                        </div>  
+                    </div>
+
+                    <div class="dropdown" id="box2">
+                        <% if(logined == undefined){ %>
+                        <a href="/login">Login</a>
+                        <a href="/signupchk">Signup</a>
+                        <% }else{ %>
+                        <a><%=logined%></a>
+                        <a href="/logout">Logout</a>
+                        <% } %> 
+                    </div>
+                    <a href="/" class="freedrow">FreeDrow</a>
+                </div>    
+            </div>
+        </div>
+        <section id="league">
+
+            <div id='calendar'></div>
+
+            <div class="notice_border">
+                <div id="notice_div1"><h4>공지사항</h4></div>
+                <div id="notice_div2">
+                    <ul>
+                        <% rdata.forEach(function(rdata,index){ %>
+                        <li><a href="/league_notice/list/detail/<%= rdata.board_num %> "><%= rdata.subject %> &nbsp;&nbsp;<span>[Free Drow]</span></a></li>
+                        <% }) %> 
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </div>        
+</body>
+</html>

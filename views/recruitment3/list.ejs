@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>자유 게시판</title>
+	<link rel="shortcut icon" href="/images/myicon.png">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<link rel="stylesheet" href="/stylesheets/board.css">
+	
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+</head>
+
+<body>
+    <div class="wrap">
+        <%- include("../header") %>
+        
+			<div class="body_box"></div>
+			<div class="container">
+				<h2>자유게시판</h2>
+				<br>
+				<br>
+				<table class="table table-striped">
+				<thead>
+				<tr>
+				<th>번호</th>
+				<th>제목</th>
+				<th>작성자</th>
+				<th>등록일</th>
+				<th>조회</th>
+				</tr>
+				</thead>
+				<tbody class="list_body">
+				<% for(let i = (page * page_num) - page_num; i < (page * page_num);i++){ %>
+					<% if(i > leng) { %>
+						<% i++; %>
+						<% }else{ %>
+							<% var pdata = data[i] %>
+						<tr>
+							<td><%= pdata.board_num%></td>
+							<td><a href="/recruitment3/list/detail/<%= pdata.board_num %>"><%= pdata.subject%></a></td>
+							<td><%= pdata.board_id%></td>
+							<td><%= moment(pdata.reg_date).format('YYYY.MM.DD') %></td>
+							<td><%= pdata.hit%></td>
+						</tr>
+					<% }} %> 
+				</tbody>
+			</table>
+			<% if(logined == undefined){ %>
+				<p><a href="javascript:alert('로그인이 필요합니다.');location.replace('/login');"><button class="list_write_bt">글쓰기</button></a></p>
+				<% }else{ %> 
+				<p><a href="/recruitment3/list/write"><button class="list_write_bt">글쓰기</button></a></p>
+					<% } %> 
+			</div>
+			
+			<div class="num-panel">
+                <% for(var j=0; j < data.length / page_num; j++){ %>
+                  <div class="num" id="<%=j+1%>">[<a href="/recruitment3/list/<%= j + 1 %>">
+                      <%= j + 1 %>
+                    </a>]</div>
+                  <% } %>
+            </div>
+		</div>		
+	</body>	
+</html>
+
+
+
+
+		
