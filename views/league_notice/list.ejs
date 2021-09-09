@@ -6,8 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>자유 게시판</title>
 	<link rel="shortcut icon" href="/images/myicon.png">
-	<link rel="stylesheet" href="/stylesheets/league.css">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<link rel="stylesheet" href="/stylesheets/league.css">
 	
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -50,7 +50,7 @@
 			<% if(logined == undefined){ %>
 				<p><a href="javascript:alert('로그인이 필요합니다.');location.replace('/login');"><button class="list_write_bt">글쓰기</button></a></p>
 				<% }else{ %> 
-				<p><a href="/league_notice/list/write"><button class="list_write_bt">글쓰기</button></a></p>
+				<p><a href="/league_notice/list/write" class="wr_btn"><button class="list_write_bt">글쓰기</button></a></p>
 					<% } %> 
 			</div>
 			

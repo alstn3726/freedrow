@@ -65,16 +65,15 @@ width: 100%;
 .dropbtn {
 background-color:black;
 color: white;
-font-size: 16px;
 border: none;
 pointer-events: none;
 }
-
-.dropdown {
-position: relative;
-display: inline-block;
-padding-left: 80px;
-}
+.dropdown, .dropbtn {
+    position: relative;
+    display: inline-block;
+    padding-left: 65px;
+    font-size: 1.5rem;
+    }
 #dropdown_content2{
 min-width: 220px;
 }

@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>자유 게시판</title>
+    <title>리그 자유 게시판</title>
 	<link rel="shortcut icon" href="/images/myicon.png">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-	<link rel="stylesheet" href="/stylesheets/board.css">
+	<link rel="stylesheet" href="/stylesheets/league.css">
 	
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -15,58 +15,7 @@
 </head>
 
 <body>
-	<div class="wrap">
-		<div class="section-wrap">
-			<div class="header">
-				<a href="/" class="main_logo">
-					<img src="/images/main_logo.png">
-				</a>
-				<div class="menu-bar">
-					<ul class="menu">
-						<li><a href="#">공지사항</a></li>
-						<li><a>모집</a>
-							<ul>
-								<li><a href="#">교류전 모집</a></li>
-								<li><a href="#">선수 모집</a></li>
-								<li><a href="#">게스트 모집</a></li>
-								<li><a href="#">리그 참가팀 모집</a></li>
-							</ul>
-						</li>
-						<li><a href="#">스코어 보드</a></li>
-						<li><a>커뮤티니</a>
-							<ul>
-								<li><a href="/comunity_board/list/1">자유게시판</a></li>
-								<li><a href="#">중고장터</a></li>
-							</ul>
-						</li>
-						<div class="search">
-							<div class="search_bar">
-								<form class="search_bar" method="POST">
-									<input type="text" name="search_word" placeholder="검색">
-								</form>
-							</div>
-							<div class="rnav">
-								<ul class="nav">
-									<li><a href="#">팀</a></li>
-									<li><a href="#">선수</a></li>
-								</ul>
-							</div>     
-						</div>
-						<div class="login_box">
-							<ul>
-								<% if(logined == undefined){ %>
-								<li><a href="/login">Login</a></li>
-								<li><a href="/signupchk">Signup</a></li>
-								<% }else{ %>
-								<li><%=logined%></li> 
-								<li><a href="/logout">Logout</a></li> 
-								<% } %> 
-							</ul>
-						</div>
-					</ul>
-				</div>    
-			</div>
-		</div>
+	<%- include("../league_header") %>
 			<div class="body_box"></div>
 			<div class="container">
 				<h2>자유게시판</h2>
@@ -90,7 +39,7 @@
 							<% var pdata = data[i] %>
 						<tr>
 							<td><%= pdata.board_num%></td>
-							<td><a href="/comunity_board/list/detail/<%= pdata.board_num %>"><%= pdata.subject%></a></td>
+							<td><a href="/league_s_board/list/detail/<%= pdata.board_num %>"><%= pdata.subject%></a></td>
 							<td><%= pdata.board_id%></td>
 							<td><%= moment(pdata.reg_date).format('YYYY.MM.DD') %></td>
 							<td><%= pdata.hit%></td>
@@ -101,18 +50,17 @@
 			<% if(logined == undefined){ %>
 				<p><a href="javascript:alert('로그인이 필요합니다.');location.replace('/login');"><button class="list_write_bt">글쓰기</button></a></p>
 				<% }else{ %> 
-				<p><a href="/comunity_board/list/write"><button class="list_write_bt">글쓰기</button></a></p>
+				<p><a href="/league_s_board/list/write" class="wr_btn"><button class="list_write_bt">글쓰기</button></a></p>
 					<% } %> 
 			</div>
 			
 			<div class="num-panel">
                 <% for(var j=0; j < data.length / page_num; j++){ %>
-                  <div class="num" id="<%=j+1%>">[<a href="/comunity_board/list/<%= j + 1 %>">
+                  <div class="num" id="<%=j+1%>">[<a href="/league_s_board/list/<%= j + 1 %>">
                       <%= j + 1 %>
                     </a>]</div>
                   <% } %>
-            </div>
-		</div>		
+            </div>		
 	</body>	
 </html>
 
